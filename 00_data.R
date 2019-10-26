@@ -1,6 +1,14 @@
 # 设置app标题-----
 
-app_title <-'App Template';
+app_title <-'网商全量更新系统V5';
+
+conn <- tsda::conn_nsim()
+
+# 01_row data part--------
+
+brand_number <- tsda::nsim_brand_FNumber()
+brand_name <- tsda::nsim_brand_FName()
+
 
 
 # 设置3条消息框------
