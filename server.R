@@ -37,8 +37,13 @@
    observeEvent(input$nsup_nsbl_update,{
      #code here
        brand <- brand();
+       starttime <- Sys.time();
+       print(starttime)
       nsblpkg::nsim_nsbl_version(brand)
+      endtime <- Sys.time()
+      print(endtime)
        pop_notice('NSBL更新完成')
+       print(tsda::nsim_version_getCurrentVersion(brand,'nsbl'))
      #code end
    })
 
