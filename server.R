@@ -50,8 +50,13 @@
   #4 更新NSDICT------
    observeEvent(input$nsup_nsdict_update,{
       #code here
-      
-      
+      brand <- brand();
+      starttime <- Sys.time();
+      print(starttime)
+      nsblpkg::nsim_nsdict_version(brand);
+      endtime <- Sys.time()
+      print(endtime)
+      pop_notice('NSDICT更新完成')
       
       #code end
       
