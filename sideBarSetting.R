@@ -2,9 +2,10 @@ sidebarMenu <-sidebarMenu(
   
 
  menuItem("全量更新",tabName = "row",icon=icon('clock')),
- menuItem("自动更新",tabName = "column",icon=icon('history')),
+ menuItem("自动更新",tabName = "column",icon=icon('history'))
+ #,
  # 1.01 出差外出数据----
- menuItem("管理后台",tabName = "book",icon=icon('plane'))
+# menuItem("管理后台",tabName = "book",icon=icon('plane'))
  # ,
  # menuItem("统计分析",tabName = "series",icon=icon('car-side')),
 
