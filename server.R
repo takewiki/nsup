@@ -53,7 +53,7 @@
       brand <- brand();
       starttime <- Sys.time();
       print(starttime)
-      nsblpkg::nsim_nsdict_version(brand);
+      nsdictpkg::nsim_nsdict_version(brand);
       endtime <- Sys.time()
       print(endtime)
       pop_notice('NSDICT更新完成')
