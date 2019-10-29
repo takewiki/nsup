@@ -106,7 +106,7 @@
       nsblpkg::nsim_nsbl_version(brand2)
       print('step3：完成NSBL更新')
       print(Sys.time());
-      nsblpkg::nsim_nsdict_version(brand2);
+      nsdictpkg::nsim_nsdict_version(brand2);
       print('step4：完成NSDICT更新')
       print(Sys.time());
       nscspkg::nsim_nscs_version(brand2);
