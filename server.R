@@ -65,10 +65,67 @@
  #5.更新NSCS-------
    observeEvent(input$nsup_nscs_update,{
       #code here
+      brand <- brand();
+      starttime <- Sys.time();
+      print(starttime)
+      nscspkg::nsim_nscs_version(brand);
+      endtime <- Sys.time()
+      print(endtime)
+      pop_notice('NSCS更新完成')
       
       #code end
    })
 #6下载文件----
+   each_page <- var_integer('each_page');
    
-   run_download_button(proc_download_button,id = 'nsup_output_download',data = iris)
+  data <- eventReactive(input$save_page,{
+     each_page <- each_page();
+     brand <- brand();
+   res <-nsuppkg::nsim_output_download_nscs(brand,each_page);
+     return(res);
+      
+   })
+   
+   run_download_button(proc_download_button,id = 'nsup_output_download',data = data());
+   
+   
+   # 以下为全部更新内容------
+   brand2 <- var_ListChoose1('nsup_brand_sel2');
+   
+   observeEvent(input$nsup_update_all,{
+      brand2 <- brand2();
+      print(brand2)
+      print('step0:开始')
+      print(Sys.time());
+      nsclpkg::qalist_idize(brand2)
+      print('step1：完成ID化')
+      print(Sys.time());
+      nsblpkg::nsim_nscl_version(brand2); 
+      print('step2：完成NSCL更新')
+      print(Sys.time());
+      nsblpkg::nsim_nsbl_version(brand2)
+      print('step3：完成NSBL更新')
+      print(Sys.time());
+      nsblpkg::nsim_nsdict_version(brand2);
+      print('step4：完成NSDICT更新')
+      print(Sys.time());
+      nscspkg::nsim_nscs_version(brand2);
+      print('step5：完成NSCS更新')
+      print(Sys.time());
+      
+      
+      
+   })
+   
+   each_page2 <- var_integer('each_page2');
+   
+   data <- eventReactive(input$save_page2,{
+      each_page2 <- each_page2();
+      brand2 <- brand2();
+      res <-nsuppkg::nsim_output_download_nscs(brand2,each_page2);
+      return(res);
+      
+   })
+   
+   run_download_button(proc_download_button,id = 'nsup_output_download',data = data());
 })

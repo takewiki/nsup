@@ -49,6 +49,8 @@ menu_row <- tabItem(tabName = "row",
                              box(
                                title = "步骤6:处理结果下载", width = NULL, solidHeader = TRUE, status = "primary"
                                ,div('提示:下载数据适配来也')
+                               ,mdl_integer('each_page','每页数量',min = 3000L,max = 8000L,value = 7000L,step = 1000L)
+                               ,actionButton('save_page','保存每页设置，点击生效')
                                ,mdl_download_button('nsup_output_download','下载文件,更新知识库')
                              )
                       )
