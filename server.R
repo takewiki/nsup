@@ -82,11 +82,13 @@
      each_page <- each_page();
      brand <- brand();
    res <-nsuppkg::nsim_output_download_nscs(brand,each_page);
+   pop_notice('自动更新读取数据完成')
      return(res);
       
    })
    
-   run_download_button(proc_download_button,id = 'nsup_output_download',data = data());
+   file_update <- paste("全量更新下载文件_",as.character(Sys.Date()),".xlsx",sep="");
+   run_download_button(proc_download_button,id = 'nsup_output_download',data = data(),filename = file_update);
    
    
    # 以下为全部更新内容------
@@ -95,11 +97,12 @@
    observeEvent(input$nsup_update_all,{
       brand2 <- brand2();
       print(brand2)
+      print(Sys.time())
       print('step0:开始')
       print(Sys.time());
       nsclpkg::qalist_idize(brand2)
       print('step1：完成ID化')
-      print(Sys.time());
+      print(Sys.time())
       nsblpkg::nsim_nscl_version(brand2); 
       print('step2：完成NSCL更新')
       print(Sys.time());
@@ -119,13 +122,15 @@
    
    each_page2 <- var_integer('each_page2');
    
-   data <- eventReactive(input$save_page2,{
+   data2 <- eventReactive(input$save_page2,{
       each_page2 <- each_page2();
       brand2 <- brand2();
       res <-nsuppkg::nsim_output_download_nscs(brand2,each_page2);
+      print('读取成功')
+      pop_notice('读取数据成功')
       return(res);
       
    })
-   
-   run_download_button(proc_download_button,id = 'nsup_output_download',data = data());
+   file_auto <- paste("自动更新下载文件_",as.character(Sys.Date()),".xlsx",sep="");
+   run_download_button(proc_download_button,id = 'nsup_output_download2',data = data2(),filename = file_auto);
 })
